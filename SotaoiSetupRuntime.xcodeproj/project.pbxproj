@@ -11,6 +11,7 @@
 		4D92A22521937D9700AF3226 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D92A22421937D9700AF3226 /* ViewController.swift */; };
 		4D92A22721937D9800AF3226 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D92A22621937D9800AF3226 /* Assets.xcassets */; };
 		4D92A22A21937D9800AF3226 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D92A22821937D9800AF3226 /* Main.storyboard */; };
+		EA6FD6CF27AA74960052CA9A /* PermissionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FD6CE27AA74960052CA9A /* PermissionsHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +33,15 @@
 
 /* Begin PBXFileReference section */
 		4D92A21F21937D9700AF3226 /* SotaoiSetupRuntime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SotaoiSetupRuntime.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D92A22221937D9700AF3226 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 4; };
-		4D92A22421937D9700AF3226 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4D92A22221937D9700AF3226 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 4; };
+		4D92A22421937D9700AF3226 /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		4D92A22621937D9800AF3226 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D92A22921937D9800AF3226 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D92A22B21937D9800AF3226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D92A23121937D9800AF3226 /* SotaoiSetupRuntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SotaoiSetupRuntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D92A23C21937D9800AF3226 /* SotaoiSetupRuntimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SotaoiSetupRuntimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6FD6CD27AA70F80052CA9A /* SotaoiSetupRuntime.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = SotaoiSetupRuntime.entitlements; sourceTree = "<group>"; };
+		EA6FD6CE27AA74960052CA9A /* PermissionsHandler.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PermissionsHandler.swift; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		4D92A22121937D9700AF3226 /* SotaoiSetupRuntime */ = {
 			isa = PBXGroup;
 			children = (
+				EA6FD6CE27AA74960052CA9A /* PermissionsHandler.swift */,
 				4D92A22221937D9700AF3226 /* AppDelegate.swift */,
 				4D92A22421937D9700AF3226 /* ViewController.swift */,
 				4D92A22621937D9800AF3226 /* Assets.xcassets */,
@@ -229,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA6FD6CF27AA74960052CA9A /* PermissionsHandler.swift in Sources */,
 				4D92A22521937D9700AF3226 /* ViewController.swift in Sources */,
 				4D92A22321937D9700AF3226 /* AppDelegate.swift in Sources */,
 			);
