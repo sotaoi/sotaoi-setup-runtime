@@ -11,7 +11,6 @@
 		4D92A22521937D9700AF3226 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D92A22421937D9700AF3226 /* ViewController.swift */; };
 		4D92A22721937D9800AF3226 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D92A22621937D9800AF3226 /* Assets.xcassets */; };
 		4D92A22A21937D9800AF3226 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D92A22821937D9800AF3226 /* Main.storyboard */; };
-		EA8FDA3E27A991BD00DD5E62 /* SotaoiSetupRuntime.entitlements in Sources */ = {isa = PBXBuildFile; fileRef = EA8FDA3D27A991BD00DD5E62 /* SotaoiSetupRuntime.entitlements */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +39,7 @@
 		4D92A22B21937D9800AF3226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D92A23121937D9800AF3226 /* SotaoiSetupRuntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SotaoiSetupRuntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D92A23C21937D9800AF3226 /* SotaoiSetupRuntimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SotaoiSetupRuntimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA8FDA3D27A991BD00DD5E62 /* SotaoiSetupRuntime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SotaoiSetupRuntime.entitlements; sourceTree = "<group>"; };
+		EA6FD6CD27AA70F80052CA9A /* SotaoiSetupRuntime.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = SotaoiSetupRuntime.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +93,7 @@
 				4D92A22621937D9800AF3226 /* Assets.xcassets */,
 				4D92A22821937D9800AF3226 /* Main.storyboard */,
 				4D92A22B21937D9800AF3226 /* Info.plist */,
-				EA8FDA3D27A991BD00DD5E62 /* SotaoiSetupRuntime.entitlements */,
+				EA6FD6CD27AA70F80052CA9A /* SotaoiSetupRuntime.entitlements */,
 			);
 			path = SotaoiSetupRuntime;
 			sourceTree = "<group>";
@@ -231,7 +230,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D92A22521937D9700AF3226 /* ViewController.swift in Sources */,
-				EA8FDA3E27A991BD00DD5E62 /* SotaoiSetupRuntime.entitlements in Sources */,
 				4D92A22321937D9700AF3226 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,7 +416,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SotaoiSetupRuntime/SotaoiSetupRuntime.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4MU292FQ4J;
