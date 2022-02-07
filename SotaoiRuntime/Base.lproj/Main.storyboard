@@ -11,11 +11,11 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="SotaoiSetupRuntime" id="1Xt-HY-uBw">
+                            <menuItem title="SotaoiRuntime" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="SotaoiSetupRuntime" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="SotaoiRuntime" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About SotaoiSetupRuntime" id="5kV-Vb-QxS">
+                                        <menuItem title="About SotaoiRuntime" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
@@ -29,7 +29,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide SotaoiSetupRuntime" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide SotaoiRuntime" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -47,7 +47,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit SotaoiSetupRuntime" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit SotaoiRuntime" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -660,7 +660,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="SotaoiSetupRuntime Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="SotaoiRuntime Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -674,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="RandomNumberGenerator" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SotaoiRuntime" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -684,11 +684,13 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="SOTAOI Environment Setup" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SotaoiRuntime" animationBehavior="default" titleVisibility="hidden" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="452" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="480" height="270"/>
+                        <value key="maxSize" type="size" width="480" height="270"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -704,31 +706,183 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="RandomNumberGenerator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="SotaoiRuntime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="489" height="288"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNt-6O-TlP">
-                                <rect key="frame" x="178" y="110" width="126" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="runtime()" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ORY-I2-Ucl">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="main:" target="XfG-lQ-9wD" id="kjM-AN-kTx"/>
-                                </connections>
-                            </button>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dfy-lH-ijO">
+                                <rect key="frame" x="15" y="20" width="459" height="65"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="200" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ge-lY-4Gx">
+                                        <rect key="frame" x="0.0" y="45" width="459" height="20"/>
+                                        <subviews>
+                                            <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VdE-nK-0Ft">
+                                                <rect key="frame" x="0.0" y="0.0" width="189" height="16"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="805-bk-flP">
+                                                        <rect key="frame" x="-2" y="-1" width="80" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Camera" bezelStyle="regularSquare" imagePosition="left" inset="2" id="8km-vQ-MSp">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="cameraButtonTapped:" target="XfG-lQ-9wD" id="WCB-Ec-08w"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GKM-F1-rHH">
+                                                        <rect key="frame" x="81" y="-1" width="108" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Microphone" bezelStyle="regularSquare" imagePosition="left" inset="2" id="1uH-ob-eSU">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="microphoneButtonTapped:" target="XfG-lQ-9wD" id="ve6-A0-6pb"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="189" id="dX7-Ab-Pkn"/>
+                                                </constraints>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MZM-BL-Dof">
+                                                <rect key="frame" x="382" y="-7" width="84" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="OII-wJ-VMb"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="push" title="Get Clip" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FEe-nG-f0Y">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="generateClipPressed:" target="XfG-lQ-9wD" id="6JA-bX-R84"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="MZM-BL-Dof" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VdE-nK-0Ft" secondAttribute="trailing" constant="20" id="MHu-cA-ttT"/>
+                                            <constraint firstAttribute="trailing" secondItem="MZM-BL-Dof" secondAttribute="trailing" id="fPq-y8-vpX"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="bottom" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ubw-GD-ECw">
+                                        <rect key="frame" x="0.0" y="0.0" width="459" height="20"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SiK-Ho-FYo">
+                                                <rect key="frame" x="-7" y="-7" width="130" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Start Recording" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qdz-NJ-7yz">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="recordButtonTapped:" target="XfG-lQ-9wD" id="Way-wv-vcO"/>
+                                                </connections>
+                                            </button>
+                                            /*
+                                            <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UZ6-RF-w9C">
+                                                <rect key="frame" x="121" y="-7" width="121" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Start Capture" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="y1u-uA-hew">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="captureButtonTapped:" target="XfG-lQ-9wD" id="Q41-1Z-7D6"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="THw-uQ-X6V">
+                                                <rect key="frame" x="240" y="-7" width="130" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Start Broadcast" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ol1-hg-ShV">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="broadcastButtonTapped:" target="XfG-lQ-9wD" id="NdX-pc-oNA"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U7i-l8-9Gm">
+                                                <rect key="frame" x="368" y="-7" width="98" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Start Clips" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fvk-1Z-D9g">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="clipButtonTapped:" target="XfG-lQ-9wD" id="VbY-c3-cC9"/>
+                                                </connections>
+                                            </button>
+                                             */
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="0Ge-lY-4Gx" secondAttribute="trailing" id="W9A-Fu-wzA"/>
+                                    <constraint firstItem="0Ge-lY-4Gx" firstAttribute="leading" secondItem="Dfy-lH-ijO" secondAttribute="leading" id="r4c-Rb-Puc"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tgK-Yz-mT3">
+                                <rect key="frame" x="93" y="145" width="303" height="56"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="SotaoiRuntime" id="F6o-Q4-Hv0">
+                                    <font key="font" metaFont="system" size="48"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Dfy-lH-ijO" secondAttribute="trailing" constant="15" id="1XN-ua-OpN"/>
+                            <constraint firstItem="Dfy-lH-ijO" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="Heb-S3-vSD"/>
+                            <constraint firstItem="tgK-Yz-mT3" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" multiplier="0.8" id="NvH-ag-vaF"/>
+                            <constraint firstItem="tgK-Yz-mT3" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="b94-sN-xbJ"/>
+                            <constraint firstAttribute="bottom" secondItem="Dfy-lH-ijO" secondAttribute="bottom" constant="20" symbolic="YES" id="zwZ-FT-FhB"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="showNumberButton" destination="HNt-6O-TlP" id="Ehw-pG-pwN"/>
+                        <outlet property="broadcastButton" destination="THw-uQ-X6V" id="Yoa-C6-Kvw"/>
+                        <outlet property="cameraCheckBox" destination="805-bk-flP" id="LbN-fk-1eu"/>
+                        <outlet property="captureButton" destination="UZ6-RF-w9C" id="WIK-Ep-MpP"/>
+                        <outlet property="clipButton" destination="U7i-l8-9Gm" id="p6Q-Zt-G0Q"/>
+                        <outlet property="getClipButton" destination="MZM-BL-Dof" id="tdW-Ub-Y9i"/>
+                        <outlet property="microphoneCheckBox" destination="GKM-F1-rHH" id="10Z-Ta-Xz9"/>
+                        <outlet property="recordButton" destination="SiK-Ho-FYo" id="q4q-Nc-5jh"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="664"/>
         </scene>
     </scenes>
 </document>

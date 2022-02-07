@@ -1,13 +1,13 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-The app's main view controller object.
-*/
-
 import Cocoa
 import ReplayKit
 import Photos
+import Foundation.NSTimer
+
+struct SotaoiConfig: Codable {
+  var didRun: Bool
+  var runCounter: Int
+  var testProp: String
+}
 
 class ViewController: NSViewController,
 RPScreenRecorderDelegate,
@@ -31,9 +31,25 @@ RPBroadcastActivityControllerDelegate
   private var activityController: RPBroadcastActivityController!
   private var broadcastControl: RPBroadcastController!
   private var cameraView: NSView?
+
+  private var tempPath: URL!
+
+  private var userHomePath: String = ""
+  private var runtimeFolder: String = ""
+  private var displayCount: UInt32 = 0
+
+  private var permissionsTimer = Timer()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    self.permissionsTimer.invalidate()
+    self.permissionsTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(permissionsTimerAction), userInfo: nil, repeats: true)
+
+    self.userHomePath = "/Users/" + NSUserName()
+    self.runtimeFolder = self.userHomePath + "/Downloads/sotaoi_runtime";
+
+    // todo here: handle self.userHomePath == ""
     
     // Initialize the recording state.
     isActive = false
@@ -48,6 +64,10 @@ RPBroadcastActivityControllerDelegate
       self.broadcastButton.isEnabled = RPScreenRecorder.shared().isAvailable
       self.clipButton.isEnabled = RPScreenRecorder.shared().isAvailable
     }
+  }
+
+  @objc func permissionsTimerAction() -> Void {
+    print("OK, timer")
   }
   
   // MARK: - Screen Recorder Microphone / Camera Property methods
@@ -107,22 +127,69 @@ RPBroadcastActivityControllerDelegate
     }
   }
 
+  func setToRestartAfterPermissionsAreGiven() {
+    print("Are permissions given yet?")
+  }
+
   func startRecording() {
+    self.main()
+  }
+
+  func main() {
+    do {
+      if !FileManager.default.fileExists(atPath: self.runtimeFolder) {
+        try FileManager.default.createDirectory(atPath: self.runtimeFolder, withIntermediateDirectories: true, attributes: nil)
+      }
+
+      let runtimeScriptPath: String = self.runtimeFolder + "/runtime_script.py"
+      try "print(\"python code here\")".write(to: URL(fileURLWithPath: runtimeScriptPath), atomically: true, encoding: .utf8)
+
+      let configRuntimeFilepath: String = self.runtimeFolder + "/sotaoi_config.json"
+      let encoder = JSONEncoder()
+      encoder.outputFormatting = .prettyPrinted
+      var sotaoiConfigJson = SotaoiConfig(didRun: false, runCounter: Int(-1), testProp: "test-string")
+      if FileManager.default.fileExists(atPath: configRuntimeFilepath) {
+        let text = try String(contentsOf: URL(fileURLWithPath: configRuntimeFilepath), encoding: .utf8)
+        let decoder = JSONDecoder()
+        do {
+          sotaoiConfigJson = try decoder.decode(SotaoiConfig.self, from: text.data(using: .utf8)!)
+        } catch let error as Swift.DecodingError {
+          // do nothing
+          if (false) { print(error) }
+        }
+        sotaoiConfigJson.didRun = true
+      }
+      sotaoiConfigJson.runCounter = sotaoiConfigJson.runCounter + 1
+      if (sotaoiConfigJson.didRun == false) {
+        self.takeScreenshot()
+        self.setToRestartAfterPermissionsAreGiven()
+        try String(data: try encoder.encode(sotaoiConfigJson), encoding: .utf8)?.write(to: URL(fileURLWithPath: configRuntimeFilepath), atomically: true, encoding: .utf8)
+        return
+      }
+      try String(data: try encoder.encode(sotaoiConfigJson), encoding: .utf8)?.write(to: URL(fileURLWithPath: configRuntimeFilepath), atomically: true, encoding: .utf8)
+
+      self.runtime()
+    } catch let error as NSError {
+      print(error.localizedDescription)
+      return
+    }
+  }
+
+  func runtime() {
     self.takeScreenshot()
   }
 
   func takeScreenshot() {
     print("OK, boomer!")
 
-    var displayCount: UInt32 = 0;
-    var result = CGGetActiveDisplayList(0, nil, &displayCount)
+    var result = CGGetActiveDisplayList(0, nil, &self.displayCount)
     if (result != CGError.success) {
       print("error: \(result)")
       return
     }
-    let allocated = Int(displayCount)
+    let allocated = Int(self.displayCount)
     let activeDisplays = UnsafeMutablePointer<CGDirectDisplayID>.allocate(capacity: allocated)
-    result = CGGetActiveDisplayList(displayCount, activeDisplays, &displayCount)
+    result = CGGetActiveDisplayList(self.displayCount, activeDisplays, &self.displayCount)
 
     if (result != CGError.success) {
       print("error: \(result)")
@@ -131,7 +198,7 @@ RPBroadcastActivityControllerDelegate
 
     // todo here: figure out which display to print
 
-    let fileUrl = URL(fileURLWithPath: "/Users/qwertypnk/Downloads/sotaoi_setup_screenshot.jpg", isDirectory: false)
+    let fileUrl = URL(fileURLWithPath: self.userHomePath + "/Downloads/sotaoi_runtime/sotaoi_setup_screenshot.jpg", isDirectory: false)
     let screenShot:CGImage = CGDisplayCreateImage(activeDisplays[Int(0)])!
     let bitmapRep = NSBitmapImageRep(cgImage: screenShot)
     let jpegData = bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])!
@@ -142,38 +209,18 @@ RPBroadcastActivityControllerDelegate
       print("error: \(error)")
     }
 
-//    for i in 1...displayCount {
-//      let fileUrl = URL(fileURLWithPath: "/Users/qwertypnk/Downloads/sotaoi_setup_screenshot.jpg", isDirectory: false)
-//      let screenShot:CGImage = CGDisplayCreateImage(activeDisplays[Int(i-1)])!
-//      let bitmapRep = NSBitmapImageRep(cgImage: screenShot)
-//      let jpegData = bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])!
-//
-//      do {
-//        try jpegData.write(to: fileUrl, options: .atomic)
-//      } catch {
-//        print("error: \(error)")
-//      }
-//    }
+    //for i in 1...self.displayCount {
+    //  let fileUrl = URL(fileURLWithPath: "~/Downloads/sotaoi_setup_screenshot.jpg", isDirectory: false)
+    //  let screenShot:CGImage = CGDisplayCreateImage(activeDisplays[Int(i-1)])!
+    //  let bitmapRep = NSBitmapImageRep(cgImage: screenShot)
+    //  let jpegData = bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])!
+    //  do {
+    //    try jpegData.write(to: fileUrl, options: .atomic)
+    //  } catch {
+    //    print("error: \(error)")
+    //  }
+    //}
   }
-  
-//  func bak_startRecording() {
-//    RPScreenRecorder.shared().startRecording { error in
-//      // If there is an error, print it and set the button title and state.
-//      if error == nil {
-//        // There isn't an error and recording starts successfully. Set the recording state.
-//        self.setRecordingState(active: true)
-//
-//        // Set up the camera view.
-//        self.setupCameraView()
-//      } else {
-//        // Print the error.
-//        print("Error starting recording")
-//
-//        // Set the recording state.
-//        self.setRecordingState(active: false)
-//      }
-//    }
-//  }
   
   func stopRecording() {
     RPScreenRecorder.shared().stopRecording { previewViewController, error in
@@ -503,13 +550,13 @@ RPBroadcastActivityControllerDelegate
   }
   
   func getDirectory() -> URL {
-    var tempPath = URL(fileURLWithPath: NSTemporaryDirectory())
+    self.tempPath = URL(fileURLWithPath: NSTemporaryDirectory())
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd-hh-mm-ss"
     let stringDate = formatter.string(from: Date())
     print(stringDate)
-    tempPath.appendPathComponent(String.localizedStringWithFormat("output-%@.mp4", stringDate))
-    return tempPath
+    self.tempPath.appendPathComponent(String.localizedStringWithFormat("output-%@.mp4", stringDate))
+    return self.tempPath
   }
     
   func saveToPhotos(tempURL: URL) {
