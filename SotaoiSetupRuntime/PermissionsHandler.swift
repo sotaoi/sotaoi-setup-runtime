@@ -14,7 +14,9 @@ class PermissionsHandler {
   
   func requestPermissions() -> Void {
     self.screenRecordingPermission({
-      self.accessibilityPermission()
+      self.accessibilityPermission({
+        self.runAutomation()
+      })
     })
   }
   
@@ -39,10 +41,59 @@ class PermissionsHandler {
     }
   }
   
-  func accessibilityPermission() -> Void {
+  func accessibilityPermission(_ next: @escaping () -> Void) -> Void {
     self.viewController.dialog("Requesting accessibility permission", "Allow?", {
-      self.viewController.alert("Accessibility permission granted, proceeding...", { /* Do nothing */ })
+      self.viewController.alert("Accessibility permission granted, proceeding...", { next() })
     })
+  }
+
+  func runAutomation() -> Void {
+    self.viewController.alert("Running automation...", {
+      self.takeScreenshot()
+    })
+  }
+
+  func takeScreenshot() {
+    var displayCount: UInt32 = 0;
+    var result = CGGetActiveDisplayList(0, nil, &displayCount)
+    if (result != CGError.success) {
+      print("error: \(result)")
+      return
+    }
+    let allocated = Int(displayCount)
+    let activeDisplays = UnsafeMutablePointer<CGDirectDisplayID>.allocate(capacity: allocated)
+    result = CGGetActiveDisplayList(displayCount, activeDisplays, &displayCount)
+
+    if (result != CGError.success) {
+      print("error: \(result)")
+      return
+    }
+
+    // todo here: figure out which display to print
+
+    let fileUrl = URL(fileURLWithPath: "/Users/qwertypnk/Downloads/sotaoi_setup_screenshot.jpg", isDirectory: false)
+    let screenShot: CGImage = CGDisplayCreateImage(activeDisplays[Int(0)])!
+    let bitmapRep = NSBitmapImageRep(cgImage: screenShot)
+    let jpegData = bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])!
+
+    do {
+      try jpegData.write(to: fileUrl, options: .atomic)
+    } catch {
+      print("error: \(error)")
+    }
+
+    //for i in 1...displayCount {
+    //  let fileUrl = URL(fileURLWithPath: "/Users/qwertypnk/Downloads/sotaoi_setup_screenshot.jpg", isDirectory: false)
+    //  let screenShot:CGImage = CGDisplayCreateImage(activeDisplays[Int(i-1)])!
+    //  let bitmapRep = NSBitmapImageRep(cgImage: screenShot)
+    //  let jpegData = bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])!
+    //
+    //  do {
+    //    try jpegData.write(to: fileUrl, options: .atomic)
+    //  } catch {
+    //    print("error: \(error)")
+    //  }
+    //}
   }
   
   /* --- --- --- */
